@@ -73,6 +73,9 @@ class HX711:
                     readbits= readbits+'0'
 
         self.lastVal = int(readbits, 2)
+        
+        if self.lastVal > 0x7fffff:
+            self.lastVal -= 0x1000000
 
         return self.lastVal
 
